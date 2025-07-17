@@ -1,0 +1,10 @@
+#Ignore Env
+*.env
+
+#Temp Files
+*.Rhistory
+*.RData
+*.Ruserdata
+
+#System´s Files
+Thumbs.db
