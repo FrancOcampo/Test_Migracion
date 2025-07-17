@@ -10,7 +10,6 @@ library(dotenv)
 
 ###
 # Cargar las variables de entorno .env
-dotenv::load_dot_env(file = "T:/_Franco/Repos/Test_Migrando/Test_migrando/tiger-cloud-test_migrando-credentials.env")
 
 # Conexion a la base
 con <- dbConnect(
@@ -26,7 +25,7 @@ con <- dbConnect(
 dbGetQuery(con, "SELECT NOW();")
 
 # Cargar el archivo CSV
-archivo_csv <- read.csv("T:/_Franco/Repos/Test_Migrando/Test_migrando/data/raw/imae_2004.csv")
+#archivo_csv <- read.csv("*/imae_2004.csv")
 
 # Subir el archivo CSV a la base de datos
 dbWriteTable(
@@ -40,7 +39,7 @@ dbWriteTable(
 
 ###-------------GENERAR .SQL CON INSERTS DESDE .CSV---------------
 
-archivo_csv <- read.csv("T:/_Franco/Repos/Test_Migrando/Test_migrando/data/raw/imae_2004.csv", sep = ";")
+archivo_csv <- read.csv("C:/Users/focampo/Documents/Repositories/Test_Migracion/data/raw/imae_2004.csv", sep = ";")
 #nombre_columnas <- names(archivo_csv)
 nombre_columnas <- c("tiempo","series_id","valor")
 tabla_destino <- "observacion"
@@ -61,7 +60,7 @@ inserts <- apply(archivo_csv, 1, function(row) {
 
 
 # Guardar en archivo .sql para copiar/pegar
-writeLines(inserts, "T:/_Franco/Repos/Test_Migrando/Test_migrando/data/raw/insert_imae_2004.sql")
+writeLines(inserts, "C:/Users/focampo/Documents/Repositories/Test_Migracion/data/raw/insert_imae_2004.sql")
 
 
 
